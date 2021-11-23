@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class GameUtils {
     public static void startGame(Scanner scanner) {
         String answer = makeAnswer();
-        System.out.printf("숫자를 입력해주세요 : ");
         while (true) {
+            System.out.printf("숫자를 입력해주세요 : ");
             String submitNumber = scanner.nextLine();
             isValidInput(submitNumber);
         }

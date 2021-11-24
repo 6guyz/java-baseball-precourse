@@ -3,12 +3,11 @@ package utils;
 import java.util.Scanner;
 
 public class GameUtils {
+    private static boolean isEnd = false;
     public static void startGame(Scanner scanner) {
         String answer = makeAnswer();
-        while (true) {
-            System.out.printf("숫자를 입력해주세요 : ");
-            String submitNumber = scanner.nextLine();
-            isValidInput(submitNumber);
+        while (isEnd) {
+            progressTurn(scanner);
         }
     }
 
@@ -26,5 +25,11 @@ public class GameUtils {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static void progressTurn(Scanner scanner) {
+        System.out.printf("숫자를 입력해주세요 : ");
+        String submitNumber = scanner.nextLine();
+        isValidInput(submitNumber);
     }
 }

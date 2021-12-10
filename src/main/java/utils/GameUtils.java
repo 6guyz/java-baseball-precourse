@@ -1,45 +1,47 @@
 package utils;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class GameUtils {
-    private static boolean isEnd = false;
     public static void startGame(Scanner scanner) {
-        String answer = makeAnswer();
-        while ( !isEnd ) {
-            progressTurn(scanner, answer);
+        Game game = new Game();
+        while ( !game.isEnd() ) {
+            progressTurn(scanner, game);
         }
     }
 
-    private static String makeAnswer() {
-        Integer intAnswer = 100*RandomUtils.nextInt(1,9) + 10*RandomUtils.nextInt(1,9) + RandomUtils.nextInt(1,9);
-        return intAnswer.toString();
+    private static void progressTurn(Scanner scanner, Game game) {
+        System.out.printf("숫자를 입력해주세요 : ");
+        String submitNumber = scanner.nextLine();
+        isValidInput(submitNumber);
+        System.out.println(submitNumber);
+        if (game.checkAnswer(submitNumber)) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            game.end();
+            return;
+        }
+        int strike = game.countStrike(submitNumber);
+        int ball = game.countBall(submitNumber);
+        if (strike > 0 || ball > 0) {
+            game.printBallAndStrike(ball, strike);
+        } else {
+            System.out.println("낫싱");
+        }
+
     }
 
     private static void isValidInput(String input) {
         if (input.length()>3 || input.contains("0")) {
             throw new IllegalArgumentException();
         }
-        try {
-            Integer.parseInt(input);
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
     }
 
-    private static void progressTurn(Scanner scanner, String answer) {
-        System.out.printf("숫자를 입력해주세요 : ");
-        String submitNumber = scanner.nextLine();
-        isValidInput(submitNumber);
-        if (isAnswer(submitNumber, answer)) {
-            isEnd = true;
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
-    }
-
-    private static boolean isAnswer(String submitNumber, String answer) {
-        if (answer.equals(submitNumber)) {
+    public static boolean checkRestart(Scanner scanner) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int restartInput = scanner.nextInt();
+        if (restartInput==1) {
             return true;
         }
         return false;

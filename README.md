@@ -56,7 +56,7 @@ while (game) {
 
 
 
-전체코드는 아래를 참고해주세요! 
+전체코드는 아래 주소를 참고해주세요!
 
-[코드참조]: https://github.com/6guyz/java-baseball-precourse/tree/hsj	"SangjinH 의 Github"
+[소스코드 참고 링크]: https://github.com/6guyz/java-baseball-precourse/tree/hsj	"SangjinH의 Github"
 

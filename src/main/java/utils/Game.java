@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Game {
     final Scanner scanner = new Scanner(System.in);
-
     private TargetNumberCreator targetNumberCreator;
     private GameUtils gameUtils;
 

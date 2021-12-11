@@ -8,6 +8,11 @@ public class Game {
     private TargetNumberCreator targetNumberCreator;
     private GameUtils gameUtils;
 
+    public Game() {
+        targetNumberCreator = new TargetNumberCreator();
+        gameUtils = new GameUtils();
+    }
+
     public void start() {
         // get targetNumber
         String targetNumber = targetNumberCreator.getTargetNumber();

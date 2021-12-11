@@ -26,14 +26,6 @@ public class GameUtils {
 
     // targetNumber and userNumber 비교
     public boolean compareTargetAndUserNumber(String targetNumber, String userNumber) {
-        if (targetNumber == userNumber) return true;
-
-        List<String> stack = new ArrayList<String>();
-        for (int i = 0; i < targetNumber.length(); i++ ) {
-
-        }
-
-
 
         return true;
     }

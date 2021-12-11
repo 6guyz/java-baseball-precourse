@@ -21,7 +21,6 @@ public class Application {
             boolean flag = true;
             while (flag) {
                 String mention = loopCycle(answer);
-                System.out.println(mention);
                 boolean finish = isFinish(mention);
                 flag = !finish;
             }
@@ -36,7 +35,14 @@ public class Application {
         }
     }
 
-    // 핵심 로직, 야구게임 반복을 위한 메소드를 묶어놈
+    /**
+     * 게임내에서 반복되는 로직들을 묶어놓은 메소드
+     * 1. 숫자를 입력받고  inputRead()
+     * 2. 정답을 확인하고  checkBallAndStrike()
+     * 3. 안내 멘트를 제공 mention()
+     * @param answer 정답으로 입력된 숫자들을 List로
+     * @return 안내멘트  "1볼 1스트라이크"
+     */
     private static String loopCycle(List<Integer> answer) {
         // 사용자의 입력을 받습니다.
         List<Integer> inputIntegers = inputRead();
@@ -44,8 +50,10 @@ public class Application {
         // Strike 와 Ball 을 계산합니다. Ball, Strike 순서로 return
         Integer[] ballAndStrike = checkBallAndStrike(answer, inputIntegers);
 
-        // 관련 안내멘트
-        return mention(ballAndStrike);
+        // 관련 안내멘트 출력
+        String mention = mention(ballAndStrike);
+        System.out.println(mention);
+        return mention;
     }
 
     private static boolean isFinish(String mention) {

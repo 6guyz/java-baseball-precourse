@@ -30,8 +30,10 @@ public class Game {
         boolean isCorrect;
 
         while (true) {
-            String userInput = scanner.nextLine();
             boolean isSame;
+
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = scanner.nextLine();
 
             try {
                 String userNumber = gameUtils.getValidDigit(userInput);  // 유효성 검사
